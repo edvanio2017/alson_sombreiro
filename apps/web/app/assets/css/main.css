@@ -1,0 +1,231 @@
+@import 'tailwindcss';
+
+/*
+ * Sistema visual da Alson Sombreiro.
+ *
+ * A identidade da marca é rigorosamente monocromática: o símbolo é um
+ * gradiente de prata sobre grafite. O site segue a mesma disciplina: nenhuma
+ * cor decorativa, apenas grafite, prata e branco, com a hierarquia construída
+ * por tipografia, espaço e contraste.
+ */
+
+@theme {
+  /* Escala de grafite, a base de toda a interface */
+  --color-graphite-50: #f7f7f8;
+  --color-graphite-100: #eeeef0;
+  --color-graphite-200: #dcdce0;
+  --color-graphite-300: #b9b9c0;
+  --color-graphite-400: #8e8e98;
+  --color-graphite-500: #6b6b75;
+  --color-graphite-600: #52525b;
+  --color-graphite-700: #3f3f46;
+  --color-graphite-800: #27272a;
+  --color-graphite-900: #18181b;
+  --color-graphite-950: #0a0a0b;
+
+  /* Prata, reservada a acentos e ao gradiente do símbolo */
+  --color-silver-100: #fafafa;
+  --color-silver-200: #e8e8ea;
+  --color-silver-300: #cfcfd4;
+  --color-silver-400: #a8a8b0;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* Didone de alto contraste, reservada aos títulos. */
+  --font-display: 'Bodoni Moda', 'Didot', 'Bodoni MT', 'Playfair Display', Georgia, serif;
+
+  --radius-none: 0px;
+
+  --shadow-elevated: 0 1px 2px rgb(10 10 11 / 0.04), 0 12px 32px -12px rgb(10 10 11 / 0.12);
+  --shadow-card: 0 1px 3px rgb(10 10 11 / 0.05);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Compensa o cabeçalho fixo ao navegar para âncoras. */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--color-silver-100);
+    color: var(--color-graphite-900);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Acessibilidade: foco sempre visível, com contraste suficiente (WCAG 2.4.7). */
+  :focus-visible {
+    outline: 2px solid var(--color-graphite-900);
+    outline-offset: 2px;
+  }
+
+  /* Respeita quem pediu menos movimento no sistema operativo. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  ::selection {
+    background-color: var(--color-graphite-900);
+    color: #ffffff;
+  }
+}
+
+/*
+ * `btn` é declarado como utilitário (e não como classe de componente) porque no
+ * Tailwind v4 apenas utilitários podem ser reutilizados através de `@apply`.
+ */
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-width: 1px;
+  padding: 0.875rem 1.75rem;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  transition: all 0.2s ease;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+  }
+}
+
+@layer components {
+  /* ---------------------------------------------------------------------- */
+  /*  Tipografia                                                            */
+  /* ---------------------------------------------------------------------- */
+
+  .eyebrow {
+    @apply text-[11px] font-medium uppercase tracking-[0.28em] text-graphite-400;
+  }
+
+  /*
+   * Numa didone as hastes finas precisam de ar: um `tracking` apertado
+   * fecha-lhes o contraste e o desenho perde a elegância. Daí o espaçamento
+   * quase neutro, ao contrário do que se usaria numa sem-serifa.
+   *
+   * `text-balance` distribui as palavras por linhas de comprimento semelhante,
+   * evitando a última linha órfã, sem depender de quebras manuais, que se
+   * partem à primeira alteração de texto ou de tamanho de ecrã.
+   */
+  .display-title {
+    font-family: var(--font-display);
+    @apply text-balance text-4xl font-normal leading-[1.1] tracking-[-0.01em] text-graphite-950 sm:text-5xl lg:text-6xl;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    @apply text-balance text-3xl font-normal leading-[1.15] tracking-[-0.005em] text-graphite-950 sm:text-4xl;
+  }
+
+  .prose-institucional {
+    @apply text-[15px] leading-[1.85] text-graphite-600;
+  }
+
+  .prose-institucional p + p {
+    @apply mt-5;
+  }
+
+  /* ---------------------------------------------------------------------- */
+  /*  Botões                                                                */
+  /* ---------------------------------------------------------------------- */
+
+  .btn-primary {
+    @apply btn border-graphite-950 bg-graphite-950 text-white hover:bg-graphite-800 hover:border-graphite-800;
+  }
+
+  .btn-outline {
+    @apply btn border-graphite-300 bg-transparent text-graphite-900 hover:border-graphite-950 hover:bg-graphite-950 hover:text-white;
+  }
+
+  .btn-ghost-light {
+    @apply btn border-white/25 bg-transparent text-white hover:border-white hover:bg-white hover:text-graphite-950;
+  }
+
+  .btn-sm {
+    @apply px-5 py-2.5 text-[11px];
+  }
+
+  /* ---------------------------------------------------------------------- */
+  /*  Campos de formulário                                                  */
+  /* ---------------------------------------------------------------------- */
+
+  .field-label {
+    @apply mb-2 block text-[12px] font-medium uppercase tracking-[0.12em] text-graphite-700;
+  }
+
+  .field-control {
+    @apply w-full border border-graphite-200 bg-white px-4 py-3 text-[15px] text-graphite-900
+           transition-colors placeholder:text-graphite-300
+           focus:border-graphite-900 focus:outline-none focus:ring-1 focus:ring-graphite-900;
+  }
+
+  .field-control-error {
+    @apply border-red-400 focus:border-red-500 focus:ring-red-500;
+  }
+
+  .field-help {
+    @apply mt-1.5 text-[13px] leading-relaxed text-graphite-400;
+  }
+
+  .field-error {
+    @apply mt-1.5 flex items-start gap-1.5 text-[13px] font-medium text-red-600;
+  }
+
+  /* ---------------------------------------------------------------------- */
+  /*  Estruturas                                                            */
+  /* ---------------------------------------------------------------------- */
+
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .surface-card {
+    @apply border border-graphite-200 bg-white shadow-[var(--shadow-card)];
+  }
+
+  .hairline {
+    @apply h-px w-full bg-graphite-200;
+  }
+
+  /* Gradiente que ecoa o símbolo da marca. */
+  .brand-gradient {
+    background: linear-gradient(135deg, #0a0a0b 0%, #3f3f46 48%, #18181b 100%);
+  }
+
+  .silver-rule {
+    background: linear-gradient(90deg, transparent, var(--color-graphite-300), transparent);
+  }
+
+  /* Apenas para leitores de ecrã. Usado no link "saltar para o conteúdo". */
+  .sr-only-focusable {
+    @apply absolute left-4 top-4 z-[100] -translate-y-24 bg-graphite-950 px-5 py-3 text-sm
+           text-white transition-transform focus:translate-y-0;
+  }
+}
+
+/* Transição entre páginas: discreta, e desligada por prefers-reduced-motion. */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.24s ease, transform 0.24s ease;
+}
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.page-leave-to {
+  opacity: 0;
+}

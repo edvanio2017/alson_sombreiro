@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.output/
+.nuxt/
+.nitro/
+.cache/
+coverage/
+*.log
+.env
+.env.local
+.env.*.local
+.DS_Store
+storage/uploads/*
+!storage/uploads/.gitkeep
+apps/api/generated/

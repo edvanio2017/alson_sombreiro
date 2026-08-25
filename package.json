@@ -1,0 +1,31 @@
+{
+  "name": "alson-sombreiro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sistema institucional Alson Sombreiro Consultadoria, Lda: site público e backoffice com Mini CRM",
+  "packageManager": "pnpm@9.12.0",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "scripts": {
+    "build": "pnpm -r --filter @alson/shared build && pnpm -r --parallel --filter=!@alson/shared build",
+    "dev": "pnpm --parallel --filter @alson/api --filter @alson/web --filter @alson/admin dev",
+    "dev:api": "pnpm --filter @alson/api dev",
+    "dev:web": "pnpm --filter @alson/web dev",
+    "dev:admin": "pnpm --filter @alson/admin dev",
+    "test": "pnpm --filter @alson/api test",
+    "lint": "pnpm -r --parallel lint",
+    "db:generate": "pnpm --filter @alson/api prisma:generate",
+    "db:migrate": "pnpm --filter @alson/api prisma:migrate",
+    "db:seed": "pnpm --filter @alson/api prisma:seed",
+    "db:reset": "pnpm --filter @alson/api prisma:reset",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f",
+    "setup": "pnpm install && pnpm --filter @alson/shared build && pnpm db:generate"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "rimraf": "^6.0.1"
+  }
+}

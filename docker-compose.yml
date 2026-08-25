@@ -1,0 +1,81 @@
+name: alson-sombreiro
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: alson_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-alson}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-alson_dev_password}
+      POSTGRES_DB: ${POSTGRES_DB:-alson_sombreiro}
+    ports:
+      - '${POSTGRES_PORT:-5432}:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-alson} -d ${POSTGRES_DB:-alson_sombreiro}']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: alson_mailpit
+    restart: unless-stopped
+    ports:
+      - '1025:1025' # SMTP
+      - '8025:8025' # Interface web
+    environment:
+      MP_MAX_MESSAGES: 500
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+      target: development
+    container_name: alson_api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://${POSTGRES_USER:-alson}:${POSTGRES_PASSWORD:-alson_dev_password}@postgres:5432/${POSTGRES_DB:-alson_sombreiro}?schema=public
+      API_PORT: 3333
+      API_PREFIX: ${API_PREFIX:-api}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://localhost:3001}
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-dev-access-secret}
+      JWT_ACCESS_TTL: ${JWT_ACCESS_TTL:-15m}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-dev-refresh-secret}
+      JWT_REFRESH_TTL: ${JWT_REFRESH_TTL:-7d}
+      BCRYPT_ROUNDS: ${BCRYPT_ROUNDS:-10}
+      STORAGE_DRIVER: local
+      STORAGE_LOCAL_PATH: /app/storage/uploads
+      UPLOAD_MAX_FILE_SIZE: ${UPLOAD_MAX_FILE_SIZE:-10485760}
+      UPLOAD_MAX_FILES: ${UPLOAD_MAX_FILES:-10}
+      MAIL_HOST: mailpit
+      MAIL_PORT: 1025
+      MAIL_SECURE: 'false'
+      MAIL_FROM_NAME: ${MAIL_FROM_NAME:-Alson Sombreiro Consultadoria}
+      MAIL_FROM_ADDRESS: ${MAIL_FROM_ADDRESS:-nao-responder@alsonsombreiro.ao}
+      MAIL_INTERNAL_RECIPIENT: ${MAIL_INTERNAL_RECIPIENT:-geral@alsonsombreiro.ao}
+      THROTTLE_TTL: ${THROTTLE_TTL:-60}
+      THROTTLE_LIMIT: ${THROTTLE_LIMIT:-60}
+      PUBLIC_SUBMIT_TTL: ${PUBLIC_SUBMIT_TTL:-3600}
+      PUBLIC_SUBMIT_LIMIT: ${PUBLIC_SUBMIT_LIMIT:-5}
+    ports:
+      - '3333:3333'
+    volumes:
+      - ./apps/api/src:/app/apps/api/src
+      - ./apps/api/prisma:/app/apps/api/prisma
+      - ./packages/shared/src:/app/packages/shared/src
+      - uploads_data:/app/storage/uploads
+
+volumes:
+  postgres_data:
+  uploads_data:

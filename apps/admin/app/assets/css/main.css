@@ -1,0 +1,193 @@
+@import 'tailwindcss';
+
+/*
+ * Sistema visual do backoffice.
+ *
+ * Partilha a paleta monocromática da marca, mas com densidade de informação
+ * muito superior à do site: tipografia menor, espaçamento compacto e cor usada
+ * exclusivamente como sinal (estados do pipeline, prioridades, alertas).
+ */
+
+@theme {
+  --color-graphite-50: #f7f7f8;
+  --color-graphite-100: #eeeef0;
+  --color-graphite-200: #dcdce0;
+  --color-graphite-300: #b9b9c0;
+  --color-graphite-400: #8e8e98;
+  --color-graphite-500: #6b6b75;
+  --color-graphite-600: #52525b;
+  --color-graphite-700: #3f3f46;
+  --color-graphite-800: #27272a;
+  --color-graphite-900: #18181b;
+  --color-graphite-950: #0a0a0b;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --shadow-panel: 0 1px 2px rgb(10 10 11 / 0.04), 0 8px 24px -12px rgb(10 10 11 / 0.14);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-graphite-50);
+    color: var(--color-graphite-900);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-graphite-900);
+    outline-offset: 1px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Utilitários base. No Tailwind v4 só utilitários podem ser reutilizados
+   através de `@apply`. */
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-width: 1px;
+  border-radius: 2px;
+  padding: 0.5rem 1rem;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+@utility input-base {
+  width: 100%;
+  border-width: 1px;
+  border-radius: 2px;
+  border-color: var(--color-graphite-200);
+  background-color: #ffffff;
+  padding: 0.5rem 0.75rem;
+  font-size: 14px;
+  color: var(--color-graphite-900);
+  transition: border-color 0.15s ease;
+
+  &::placeholder {
+    color: var(--color-graphite-300);
+  }
+
+  &:focus {
+    border-color: var(--color-graphite-900);
+    outline: none;
+    box-shadow: 0 0 0 1px var(--color-graphite-900);
+  }
+
+  &:disabled {
+    background-color: var(--color-graphite-50);
+    color: var(--color-graphite-400);
+  }
+}
+
+@utility nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 2px;
+  padding: 0.5rem 0.75rem;
+  font-size: 13px;
+  font-weight: 500;
+  transition: colors 0.15s ease;
+}
+
+@layer components {
+  .btn-primary {
+    @apply btn border-graphite-950 bg-graphite-950 text-white hover:bg-graphite-800;
+  }
+
+  .btn-secondary {
+    @apply btn border-graphite-200 bg-white text-graphite-700 hover:border-graphite-400 hover:text-graphite-950;
+  }
+
+  .btn-danger {
+    @apply btn border-red-200 bg-white text-red-600 hover:border-red-500 hover:bg-red-600 hover:text-white;
+  }
+
+  .btn-xs {
+    @apply px-2.5 py-1 text-[12px];
+  }
+
+  .input {
+    @apply input-base;
+  }
+
+  .input-error {
+    @apply border-red-400 focus:border-red-500 focus:shadow-[0_0_0_1px_var(--color-red-500)];
+  }
+
+  .label {
+    @apply mb-1.5 block text-[12px] font-medium text-graphite-600;
+  }
+
+  .field-error {
+    @apply mt-1 text-[12px] text-red-600;
+  }
+
+  .panel {
+    @apply rounded-sm border border-graphite-200 bg-white;
+  }
+
+  .panel-header {
+    @apply flex items-center justify-between gap-4 border-b border-graphite-200 px-5 py-3.5;
+  }
+
+  .panel-title {
+    @apply text-[14px] font-semibold text-graphite-900;
+  }
+
+  .table-head {
+    @apply border-b border-graphite-200 bg-graphite-50 px-4 py-2.5 text-left text-[11px]
+           font-semibold uppercase tracking-wider text-graphite-500;
+  }
+
+  .table-cell {
+    @apply border-b border-graphite-100 px-4 py-3 text-[13px] text-graphite-700 align-middle;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium;
+  }
+
+  .stat-value {
+    @apply text-3xl font-semibold tracking-tight text-graphite-950;
+  }
+
+  .stat-label {
+    @apply mt-1 text-[12px] text-graphite-500;
+  }
+
+  .nav-link-idle {
+    @apply nav-link text-graphite-400 hover:bg-white/5 hover:text-white;
+  }
+
+  .nav-link-active {
+    @apply nav-link bg-white/10 text-white;
+  }
+
+  /* Cartão do Kanban durante o arrasto. */
+  .kanban-card-dragging {
+    @apply opacity-40;
+  }
+
+  .kanban-column-over {
+    @apply bg-graphite-100 ring-1 ring-inset ring-graphite-400;
+  }
+}
