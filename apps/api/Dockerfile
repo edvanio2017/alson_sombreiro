@@ -3,7 +3,7 @@
 # O contexto de build é a raiz do monorepo (ver docker-compose.yml).
 # =============================================================================
 
-FROM node:20-alpine AS base
+FROM node:22-alpine AS base
 RUN corepack enable && apk add --no-cache openssl
 WORKDIR /app
 
