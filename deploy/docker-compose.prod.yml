@@ -1,0 +1,121 @@
+# =============================================================================
+# Produção — Alson Sombreiro Consultadoria
+# Corre no servidor (2.28.31.222). As imagens vêm prontas do GHCR; o servidor
+# apenas as puxa e arranca. Caddy termina o TLS (HTTPS automático).
+# Ficheiro colocado em /opt/alson/docker-compose.prod.yml pelo pipeline.
+# =============================================================================
+
+name: alson-prod
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: alson_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks: [internal]
+
+  api:
+    image: ${IMAGE_PREFIX}/api:${IMAGE_TAG:-latest}
+    container_name: alson_api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?schema=public
+      API_PORT: 3333
+      API_PREFIX: ${API_PREFIX:-api}
+      CORS_ORIGINS: ${CORS_ORIGINS}
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET}
+      JWT_ACCESS_TTL: ${JWT_ACCESS_TTL:-15m}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
+      JWT_REFRESH_TTL: ${JWT_REFRESH_TTL:-7d}
+      BCRYPT_ROUNDS: ${BCRYPT_ROUNDS:-12}
+      STORAGE_DRIVER: local
+      STORAGE_LOCAL_PATH: /app/storage/uploads
+      UPLOAD_MAX_FILE_SIZE: ${UPLOAD_MAX_FILE_SIZE:-10485760}
+      UPLOAD_MAX_FILES: ${UPLOAD_MAX_FILES:-10}
+      MAIL_HOST: ${MAIL_HOST}
+      MAIL_PORT: ${MAIL_PORT}
+      MAIL_SECURE: ${MAIL_SECURE:-true}
+      MAIL_USER: ${MAIL_USER}
+      MAIL_PASSWORD: ${MAIL_PASSWORD}
+      MAIL_FROM_NAME: ${MAIL_FROM_NAME:-Alson Sombreiro Consultadoria}
+      MAIL_FROM_ADDRESS: ${MAIL_FROM_ADDRESS}
+      MAIL_INTERNAL_RECIPIENT: ${MAIL_INTERNAL_RECIPIENT}
+      THROTTLE_TTL: ${THROTTLE_TTL:-60}
+      THROTTLE_LIMIT: ${THROTTLE_LIMIT:-60}
+      PUBLIC_SUBMIT_TTL: ${PUBLIC_SUBMIT_TTL:-3600}
+      PUBLIC_SUBMIT_LIMIT: ${PUBLIC_SUBMIT_LIMIT:-5}
+      NUXT_PUBLIC_SITE_URL: ${SITE_URL}
+      ADMIN_URL: ${ADMIN_URL}
+      NUXT_PUBLIC_SITE_NAME: ${SITE_NAME:-Alson Sombreiro Consultadoria}
+    volumes:
+      - uploads_data:/app/storage/uploads
+    networks: [internal]
+
+  web:
+    image: ${IMAGE_PREFIX}/web:${IMAGE_TAG:-latest}
+    container_name: alson_web
+    restart: unless-stopped
+    depends_on: [api]
+    environment:
+      NODE_ENV: production
+      NITRO_PORT: 3000
+      NITRO_HOST: 0.0.0.0
+      # Vista pelo SSR, dentro da rede Docker:
+      NUXT_API_BASE_SERVER: http://api:3333/${API_PREFIX:-api}
+      # Vista pelo browser do visitante:
+      NUXT_PUBLIC_API_BASE: ${PUBLIC_API_BASE}
+      NUXT_PUBLIC_SITE_URL: ${SITE_URL}
+      NUXT_PUBLIC_SITE_NAME: ${SITE_NAME:-Alson Sombreiro Consultadoria}
+    networks: [internal]
+
+  admin:
+    image: ${IMAGE_PREFIX}/admin:${IMAGE_TAG:-latest}
+    container_name: alson_admin
+    restart: unless-stopped
+    depends_on: [api]
+    environment:
+      NODE_ENV: production
+      NITRO_PORT: 3000
+      NITRO_HOST: 0.0.0.0
+      NUXT_PUBLIC_API_BASE: ${PUBLIC_API_BASE}
+      NUXT_PUBLIC_SITE_URL: ${SITE_URL}
+    networks: [internal]
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: alson_caddy
+    restart: unless-stopped
+    depends_on: [web, admin, api]
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks: [internal]
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  uploads_data:
+  caddy_data:
+  caddy_config:

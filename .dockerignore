@@ -1,0 +1,21 @@
+# Contexto de build partilhado por todas as imagens do monorepo.
+**/node_modules
+**/dist
+**/.output
+**/.nuxt
+**/.nitro
+**/.cache
+**/coverage
+**/*.log
+.git
+.github
+.env
+.env.*
+!.env.example
+storage/uploads/*
+!storage/uploads/.gitkeep
+.browser-sessions
+docs
+logos
+*.pptx
+*.pdf

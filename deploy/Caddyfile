@@ -1,0 +1,27 @@
+# =============================================================================
+# Caddy — reverse proxy com HTTPS automático (Let's Encrypt).
+# Os certificados são emitidos assim que o DNS de cada domínio apontar para o
+# servidor. Até lá, o Caddy serve por HTTP e continua a tentar emitir.
+# =============================================================================
+
+{
+	email geral@alsonsombreiro.ao
+}
+
+# --- Site institucional ------------------------------------------------------
+alsonsombreiro.ao, www.alsonsombreiro.ao {
+	encode zstd gzip
+	reverse_proxy web:3000
+}
+
+# --- Backoffice / Mini CRM ---------------------------------------------------
+admin.alsonsombreiro.ao {
+	encode zstd gzip
+	reverse_proxy admin:3000
+}
+
+# --- API ---------------------------------------------------------------------
+api.alsonsombreiro.ao {
+	encode zstd gzip
+	reverse_proxy api:3333
+}
