@@ -14,7 +14,7 @@ const generalError = ref('');
 useSeo({
   title: 'Contacto',
   description:
-    'Contacte a Alson Sombreiro Consultadoria. Escritórios em Benguela (sede), Luanda e Huambo. Telefone +244 923 075 864.',
+    'Contacte a Alson Sombreiro Consultoria. Escritórios em Benguela (sede), Luanda e Huambo. Telefone +244 923 075 864.',
   path: '/contacto',
 });
 
@@ -119,7 +119,7 @@ async function submit(): Promise<void> {
             <div class="border-l-2 border-graphite-950 bg-white p-5">
               <p class="text-[13px] leading-relaxed text-graphite-600">
                 Já submeteu um pedido? Consulte o estado do processo em
-                <NuxtLink to="/acompanhar" class="text-graphite-950 underline">Acompanhar pedido</NuxtLink>.
+                <NuxtLink to="/acompanhar" class="text-graphite-950 underline">Meu pedido</NuxtLink>.
               </p>
             </div>
           </div>

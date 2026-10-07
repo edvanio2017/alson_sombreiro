@@ -2,7 +2,7 @@
   "name": "@alson/web",
   "version": "1.0.0",
   "private": true,
-  "description": "Site institucional da Alson Sombreiro Consultadoria (Nuxt 4 · SSR)",
+  "description": "Site institucional da Alson Sombreiro Consultoria (Nuxt 4 · SSR)",
   "type": "module",
   "scripts": {
     "dev": "nuxt dev --port 3000",

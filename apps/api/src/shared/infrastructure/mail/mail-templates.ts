@@ -34,7 +34,7 @@ function layout({ title, preheader, body, footerNote, siteUrl, companyName }: La
           <tr>
             <td style="background:linear-gradient(135deg,#18181b 0%,#3f3f46 100%);padding:28px 32px;">
               <div style="color:#ffffff;font-size:18px;letter-spacing:0.22em;font-weight:600;text-transform:uppercase;">Alson Sombreiro</div>
-              <div style="color:#a1a1aa;font-size:10px;letter-spacing:0.36em;text-transform:uppercase;margin-top:6px;">Imobiliária · Consultadoria</div>
+              <div style="color:#a1a1aa;font-size:10px;letter-spacing:0.36em;text-transform:uppercase;margin-top:6px;">Imobiliária · Consultoria</div>
             </td>
           </tr>
           <tr>

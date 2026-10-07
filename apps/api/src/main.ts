@@ -44,7 +44,7 @@ async function bootstrap(): Promise<void> {
     const document = SwaggerModule.createDocument(
       app,
       new DocumentBuilder()
-        .setTitle('API Alson Sombreiro Consultadoria')
+        .setTitle('API Alson Sombreiro Consultoria')
         .setDescription(
           'Serviços REST do site institucional e do backoffice com Mini CRM.\n\n' +
             'Autenticação: JWT Bearer com refresh token. Os endpoints sob `/public` não requerem autenticação.',
@@ -52,7 +52,7 @@ async function bootstrap(): Promise<void> {
         .setVersion('1.0.0')
         .addBearerAuth()
         .addServer(`http://localhost:${port}/${prefix}`, 'Ambiente local')
-        .setContact('Alson Sombreiro Consultadoria, Lda', site.publicUrl, 'geral@alsonsombreiro.ao')
+        .setContact('Alson Sombreiro Consultoria, Lda', site.publicUrl, 'geral@alsonsombreiro.ao')
         .build(),
     );
 

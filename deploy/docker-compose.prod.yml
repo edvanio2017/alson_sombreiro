@@ -1,5 +1,5 @@
 # =============================================================================
-# Produção — Alson Sombreiro Consultadoria
+# Produção — Alson Sombreiro Consultoria
 # Corre no servidor (2.28.31.222). As imagens vêm prontas do GHCR; o servidor
 # apenas as puxa e arranca. Caddy termina o TLS (HTTPS automático).
 # Ficheiro colocado em /opt/alson/docker-compose.prod.yml pelo pipeline.
@@ -52,7 +52,7 @@ services:
       MAIL_SECURE: ${MAIL_SECURE:-true}
       MAIL_USER: ${MAIL_USER}
       MAIL_PASSWORD: ${MAIL_PASSWORD}
-      MAIL_FROM_NAME: ${MAIL_FROM_NAME:-Alson Sombreiro Consultadoria}
+      MAIL_FROM_NAME: ${MAIL_FROM_NAME:-Alson Sombreiro Consultoria}
       MAIL_FROM_ADDRESS: ${MAIL_FROM_ADDRESS}
       MAIL_INTERNAL_RECIPIENT: ${MAIL_INTERNAL_RECIPIENT}
       THROTTLE_TTL: ${THROTTLE_TTL:-60}
@@ -61,7 +61,7 @@ services:
       PUBLIC_SUBMIT_LIMIT: ${PUBLIC_SUBMIT_LIMIT:-5}
       NUXT_PUBLIC_SITE_URL: ${SITE_URL}
       ADMIN_URL: ${ADMIN_URL}
-      NUXT_PUBLIC_SITE_NAME: ${SITE_NAME:-Alson Sombreiro Consultadoria}
+      NUXT_PUBLIC_SITE_NAME: ${SITE_NAME:-Alson Sombreiro Consultoria}
     volumes:
       - uploads_data:/app/storage/uploads
     networks: [internal]
@@ -80,7 +80,7 @@ services:
       # Vista pelo browser do visitante:
       NUXT_PUBLIC_API_BASE: ${PUBLIC_API_BASE}
       NUXT_PUBLIC_SITE_URL: ${SITE_URL}
-      NUXT_PUBLIC_SITE_NAME: ${SITE_NAME:-Alson Sombreiro Consultadoria}
+      NUXT_PUBLIC_SITE_NAME: ${SITE_NAME:-Alson Sombreiro Consultoria}
     networks: [internal]
 
   admin:

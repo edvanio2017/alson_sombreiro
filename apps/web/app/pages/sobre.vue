@@ -3,7 +3,7 @@ definePageMeta({ heroUnderHeader: true });
 useSeo({
   title: 'A empresa',
   description:
-    'A Alson Sombreiro Consultadoria, Lda é uma empresa angolana constituída em 2019, especializada em mediação imobiliária, gestão de património e registo de imóveis.',
+    'A Alson Sombreiro Consultoria, Lda é uma empresa angolana constituída em 2019, especializada em mediação imobiliária, gestão de património e registo de imóveis.',
   path: '/sobre',
 });
 
@@ -41,7 +41,7 @@ const specialists = [
     name: 'Dr. António Vicente Ventura Kativa',
     items: [
       'Licenciado em Direito, Instituto Superior Politécnico Católico de Benguela, 2014',
-      'Director do Gabinete Jurídico da Alson Sombreiro Consultadoria, Lda',
+      'Director do Gabinete Jurídico da Alson Sombreiro Consultoria, Lda',
     ],
   },
   {
@@ -79,7 +79,7 @@ const values = [
           Especialização ao serviço do património imobiliário angolano.
         </h1>
         <p class="mt-7 text-[16px] leading-[1.85] text-graphite-300">
-          A Alson Sombreiro Consultadoria, Lda é uma empresa de direito angolano, constituída em 2019,
+          A Alson Sombreiro Consultoria, Lda é uma empresa de direito angolano, constituída em 2019,
           com origem num conjunto de entidades empresariais nacionais especializadas nos vários
           domínios da sua actividade.
         </p>

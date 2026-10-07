@@ -20,7 +20,7 @@
           Gestão integrada dos pedidos de serviço, do primeiro contacto à conclusão do processo.
         </p>
         <p class="mt-6 text-[13px] leading-relaxed text-graphite-400">
-          Backoffice da Alson Sombreiro Consultadoria, Lda: mediação imobiliária, gestão de património
+          Backoffice da Alson Sombreiro Consultoria, Lda: mediação imobiliária, gestão de património
           e registo de imóveis.
         </p>
       </div>

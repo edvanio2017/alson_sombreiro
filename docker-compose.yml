@@ -61,7 +61,7 @@ services:
       MAIL_HOST: mailpit
       MAIL_PORT: 1025
       MAIL_SECURE: 'false'
-      MAIL_FROM_NAME: ${MAIL_FROM_NAME:-Alson Sombreiro Consultadoria}
+      MAIL_FROM_NAME: ${MAIL_FROM_NAME:-Alson Sombreiro Consultoria}
       MAIL_FROM_ADDRESS: ${MAIL_FROM_ADDRESS:-nao-responder@alsonsombreiro.ao}
       MAIL_INTERNAL_RECIPIENT: ${MAIL_INTERNAL_RECIPIENT:-geral@alsonsombreiro.ao}
       THROTTLE_TTL: ${THROTTLE_TTL:-60}
