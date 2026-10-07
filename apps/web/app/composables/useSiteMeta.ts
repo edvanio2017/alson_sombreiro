@@ -1,8 +1,8 @@
 /** Dados institucionais reutilizados em vários pontos do site. */
 export const COMPANY = {
-  legalName: 'Alson Sombreiro Consultadoria, Lda',
+  legalName: 'Alson Sombreiro Consultoria, Lda',
   shortName: 'Alson Sombreiro',
-  tagline: 'Imobiliária · Consultadoria',
+  tagline: 'Imobiliária · Consultoria',
   foundedYear: 2019,
   email: 'geral@alsonsombreiro.ao',
   phones: ['+244 923 075 864', '+244 924 938 576'],

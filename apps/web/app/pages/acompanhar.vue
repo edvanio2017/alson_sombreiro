@@ -23,9 +23,9 @@ const notFound = ref(false);
 const result = ref<PublicRequestView | null>(null);
 
 useSeo({
-  title: 'Acompanhar pedido',
+  title: 'Meu pedido',
   description:
-    'Consulte o estado do seu pedido à Alson Sombreiro Consultadoria com o número de referência e o e-mail usado na submissão.',
+    'Consulte o estado do seu pedido à Alson Sombreiro Consultoria com o número de referência e o e-mail usado na submissão.',
   path: '/acompanhar',
   // Página de consulta pessoal, que não faz sentido indexar.
   noindex: true,

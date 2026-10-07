@@ -2,7 +2,7 @@
 useSeo({
   title: 'Política de Privacidade',
   description:
-    'Como a Alson Sombreiro Consultadoria recolhe, trata e protege os dados pessoais submetidos através do site.',
+    'Como a Alson Sombreiro Consultoria recolhe, trata e protege os dados pessoais submetidos através do site.',
   path: '/privacidade',
 });
 
@@ -10,7 +10,7 @@ const sections = [
   {
     title: '1. Responsável pelo tratamento',
     paragraphs: [
-      'A Alson Sombreiro Consultadoria, Lda, com sede na Rua Alexandre Herculano n.º 35, Benguela, é a entidade responsável pelo tratamento dos dados pessoais recolhidos através deste site.',
+      'A Alson Sombreiro Consultoria, Lda, com sede na Rua Alexandre Herculano n.º 35, Benguela, é a entidade responsável pelo tratamento dos dados pessoais recolhidos através deste site.',
       'Para qualquer questão relacionada com privacidade, contacte-nos através de geral@alsonsombreiro.ao.',
     ],
   },

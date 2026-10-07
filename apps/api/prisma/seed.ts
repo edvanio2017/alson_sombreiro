@@ -2,7 +2,7 @@
  * Seed da base de dados.
  *
  * Popula perfis, utilizadores de demonstração, o pipeline de estados e o
- * catálogo real de serviços da Alson Sombreiro Consultadoria, cada um com o
+ * catálogo real de serviços da Alson Sombreiro Consultoria, cada um com o
  * seu formulário já configurado, e cria alguns pedidos de exemplo para que o
  * dashboard e o Kanban tenham conteúdo ao primeiro arranque.
  *
@@ -314,7 +314,7 @@ const SERVICES: SeedService[] = [
     icon: 'chart-bar',
     featured: true,
     order: 1,
-    metaTitle: 'Avaliação Imobiliária em Angola | Alson Sombreiro Consultadoria',
+    metaTitle: 'Avaliação Imobiliária em Angola | Alson Sombreiro Consultoria',
     metaDescription:
       'Avaliação imobiliária por perito inscrito na CMC. Relatórios aceites por bancos e tribunais, em Luanda, Benguela e Huambo.',
     fields: [
@@ -428,7 +428,7 @@ const SERVICES: SeedService[] = [
     icon: 'handshake',
     featured: true,
     order: 3,
-    metaTitle: 'Mediação Imobiliária em Angola | Alson Sombreiro Consultadoria',
+    metaTitle: 'Mediação Imobiliária em Angola | Alson Sombreiro Consultoria',
     metaDescription:
       'Compra, venda e arrendamento de imóveis com mediação profissional em Luanda, Benguela e Huambo.',
     fields: [
@@ -494,7 +494,7 @@ const SERVICES: SeedService[] = [
     ],
     icon: 'building-office',
     order: 4,
-    metaTitle: 'Avaliação Patrimonial de Empresas | Alson Sombreiro Consultadoria',
+    metaTitle: 'Avaliação Patrimonial de Empresas | Alson Sombreiro Consultoria',
     metaDescription:
       'Avaliação do património imobiliário de empresas e instituições em Angola, com equipa pluridisciplinar e relatórios técnicos fundamentados.',
     fields: [
@@ -635,7 +635,7 @@ const SERVICES: SeedService[] = [
     ],
     icon: 'key',
     order: 6,
-    metaTitle: 'Gestão de Arrendamento em Angola | Alson Sombreiro Consultadoria',
+    metaTitle: 'Gestão de Arrendamento em Angola | Alson Sombreiro Consultoria',
     metaDescription:
       'Gestão administrativa e financeira de imóveis arrendados em Luanda, Benguela e Huambo.',
     fields: [
@@ -701,7 +701,7 @@ const SERVICES: SeedService[] = [
     ],
     icon: 'clipboard-list',
     order: 7,
-    metaTitle: 'Inventariação Patrimonial | Alson Sombreiro Consultadoria',
+    metaTitle: 'Inventariação Patrimonial | Alson Sombreiro Consultoria',
     metaDescription:
       'Levantamento e cadastro de património imobiliário de empresas e instituições em Angola.',
     fields: [
@@ -764,7 +764,7 @@ const SERVICES: SeedService[] = [
     ],
     icon: 'search',
     order: 8,
-    metaTitle: 'Angariação de Imóveis em Angola | Alson Sombreiro Consultadoria',
+    metaTitle: 'Angariação de Imóveis em Angola | Alson Sombreiro Consultoria',
     metaDescription:
       'Procura e qualificação de imóveis à medida do seu perfil e orçamento, em Luanda, Benguela e Huambo.',
     fields: [
@@ -1126,7 +1126,7 @@ async function seedSampleRequests() {
 }
 
 async function main() {
-  console.log('\n🌱 Seed da Alson Sombreiro Consultadoria\n');
+  console.log('\n🌱 Seed da Alson Sombreiro Consultoria\n');
 
   await seedRoles();
   await seedUsers();

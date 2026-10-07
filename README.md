@@ -1,4 +1,4 @@
-# Alson Sombreiro Consultadoria · Sistema Institucional
+# Alson Sombreiro Consultoria · Sistema Institucional
 
 Sistema composto por dois módulos:
 
@@ -7,7 +7,7 @@ Sistema composto por dois módulos:
 - **Backoffice com Mini CRM**: dashboard, gestão do catálogo e do construtor de
   formulários, lista e Kanban de pedidos, pipeline configurável, utilizadores e auditoria.
 
-> Alson Sombreiro Consultadoria, Lda é uma empresa angolana constituída em 2019,
+> Alson Sombreiro Consultoria, Lda é uma empresa angolana constituída em 2019,
 > especializada em mediação imobiliária, gestão de património e registo de imóveis.
 > Sede em Benguela, filiais em Luanda e Huambo.
 
@@ -482,6 +482,6 @@ Ajuste `API_PORT`, `WEB_PORT` ou `ADMIN_PORT` no `.env`.
 
 ---
 
-© Alson Sombreiro Consultadoria, Lda
+© Alson Sombreiro Consultoria, Lda
 Sede: Rua Alexandre Herculano n.º 35, Benguela · Filiais: Luanda e Huambo
 +244 923 075 864 · geral@alsonsombreiro.ao

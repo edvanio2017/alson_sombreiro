@@ -49,6 +49,14 @@ const numbers = [
   <div>
     <!-- ------------------------------- Hero -------------------------------- -->
     <section class="relative -mt-20 flex min-h-[92vh] items-center overflow-hidden brand-gradient">
+      <img
+        src="/imagens/pexels-photo-33052786.avif"
+        alt=""
+        class="absolute inset-0 h-full w-full object-cover"
+        fetchpriority="high"
+        aria-hidden="true"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-graphite-950/95 via-graphite-950/80 to-graphite-950/40" aria-hidden="true" />
       <!-- Malha geométrica que ecoa o símbolo da marca -->
       <div class="pointer-events-none absolute inset-0 opacity-[0.07]" aria-hidden="true">
         <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg">
@@ -63,7 +71,7 @@ const numbers = [
 
       <div class="container-page relative pt-32 pb-24">
         <div class="max-w-3xl">
-          <p class="eyebrow text-graphite-400">Alson Sombreiro Consultadoria · Angola</p>
+          <p class="eyebrow text-graphite-400">Alson Sombreiro Consultoria · Angola</p>
 
           <h1 class="display-title mt-6 text-white">
             Segurança jurídica e valor real para o seu património imobiliário.
@@ -105,12 +113,20 @@ const numbers = [
           <h2 class="section-title mt-4">
             Uma consultoria angolana construída sobre especialização.
           </h2>
+          <figure class="mt-10 overflow-hidden">
+            <img
+              src="/imagens/HARD_KILAMBA_AMPE-ROGERIO-2.jpg"
+              alt="Rua residencial numa centralidade em Luanda"
+              class="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-105"
+              loading="lazy"
+            />
+          </figure>
         </div>
 
         <div class="lg:col-span-7">
           <div class="prose-institucional">
             <p>
-              A Alson Sombreiro Consultadoria é uma empresa de direito angolano, constituída em 2019,
+              A Alson Sombreiro Consultoria é uma empresa de direito angolano, constituída em 2019,
               com origem num conjunto de entidades empresariais nacionais com vasto conhecimento da
               realidade do País e especializadas nos vários domínios da sua actividade.
             </p>
@@ -255,8 +271,16 @@ const numbers = [
     </section>
 
     <!-- ------------------------------- FESADA ------------------------------ -->
-    <section v-if="featured.length" class="brand-gradient py-24 text-white lg:py-32">
-      <div class="container-page grid gap-14 lg:grid-cols-12 lg:gap-20">
+    <section v-if="featured.length" class="relative overflow-hidden brand-gradient py-24 text-white lg:py-32">
+      <img
+        src="/imagens/67324255_1348460921979469_4108613836167184384_n.jpg"
+        alt=""
+        class="absolute inset-0 h-full w-full object-cover"
+        loading="lazy"
+        aria-hidden="true"
+      />
+      <div class="absolute inset-0 bg-graphite-950/85" aria-hidden="true" />
+      <div class="container-page relative grid gap-14 lg:grid-cols-12 lg:gap-20">
         <div class="lg:col-span-5">
           <p class="eyebrow text-graphite-400">Em destaque</p>
           <h2 class="section-title mt-4 text-white">
@@ -284,7 +308,7 @@ const numbers = [
                 'Condições especiais para imóveis das centralidades',
               ]"
               :key="benefit"
-              class="brand-gradient p-7"
+              class="bg-graphite-950/60 p-7 backdrop-blur-sm"
             >
               <svg
                 class="h-5 w-5 text-white/40"
@@ -316,7 +340,7 @@ const numbers = [
           </div>
           <div class="flex shrink-0 flex-col gap-3 sm:flex-row">
             <NuxtLink to="/servicos" class="btn-primary">Submeter pedido</NuxtLink>
-            <NuxtLink to="/acompanhar" class="btn-outline">Acompanhar pedido</NuxtLink>
+            <NuxtLink to="/acompanhar" class="btn-outline">Meu pedido</NuxtLink>
           </div>
         </div>
       </div>

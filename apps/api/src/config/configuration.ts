@@ -99,7 +99,7 @@ export default (): AppConfig => ({
     secure: process.env.MAIL_SECURE === 'true',
     user: process.env.MAIL_USER || undefined,
     password: process.env.MAIL_PASSWORD || undefined,
-    fromName: process.env.MAIL_FROM_NAME ?? 'Alson Sombreiro Consultadoria',
+    fromName: process.env.MAIL_FROM_NAME ?? 'Alson Sombreiro Consultoria',
     fromAddress: process.env.MAIL_FROM_ADDRESS ?? 'nao-responder@alsonsombreiro.ao',
     internalRecipient: process.env.MAIL_INTERNAL_RECIPIENT ?? 'geral@alsonsombreiro.ao',
   },
@@ -116,6 +116,6 @@ export default (): AppConfig => ({
   site: {
     publicUrl: process.env.NUXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
     adminUrl: process.env.ADMIN_URL ?? 'http://localhost:3001',
-    name: process.env.NUXT_PUBLIC_SITE_NAME ?? 'Alson Sombreiro Consultadoria',
+    name: process.env.NUXT_PUBLIC_SITE_NAME ?? 'Alson Sombreiro Consultoria',
   },
 });

@@ -2,7 +2,7 @@
 useSeo({
   title: 'Termos de Utilização',
   description:
-    'Condições de utilização do site institucional da Alson Sombreiro Consultadoria, Lda e do serviço de submissão de pedidos online.',
+    'Condições de utilização do site institucional da Alson Sombreiro Consultoria, Lda e do serviço de submissão de pedidos online.',
   path: '/termos',
 });
 
@@ -10,7 +10,7 @@ const sections = [
   {
     title: '1. Objecto',
     paragraphs: [
-      'Estes termos regulam o acesso e a utilização do site institucional da Alson Sombreiro Consultadoria, Lda, incluindo o serviço de submissão de pedidos de serviço em linha.',
+      'Estes termos regulam o acesso e a utilização do site institucional da Alson Sombreiro Consultoria, Lda, incluindo o serviço de submissão de pedidos de serviço em linha.',
       'A utilização do site implica a aceitação integral destas condições.',
     ],
   },
@@ -39,7 +39,7 @@ const sections = [
   {
     title: '5. Propriedade intelectual',
     paragraphs: [
-      'A marca, o logótipo, os textos e os demais elementos do site são propriedade da Alson Sombreiro Consultadoria, Lda ou usados com autorização, não podendo ser reproduzidos sem consentimento escrito.',
+      'A marca, o logótipo, os textos e os demais elementos do site são propriedade da Alson Sombreiro Consultoria, Lda ou usados com autorização, não podendo ser reproduzidos sem consentimento escrito.',
     ],
   },
   {

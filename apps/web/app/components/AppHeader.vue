@@ -10,8 +10,8 @@ const lightMode = computed(() => overDark.value && !scrolled.value && !mobileOpe
 const navigation = [
   { label: 'Início', to: '/' },
   { label: 'Serviços', to: '/servicos' },
-  { label: 'A empresa', to: '/sobre' },
-  { label: 'Acompanhar pedido', to: '/acompanhar' },
+  { label: 'Sobre', to: '/sobre' },
+  { label: 'Meu pedido', to: '/acompanhar' },
   { label: 'Contacto', to: '/contacto' },
 ];
 
@@ -53,7 +53,7 @@ onBeforeUnmount(() => {
   >
     <div class="container-page">
       <div class="flex h-20 items-center justify-between gap-6">
-        <NuxtLink to="/" class="shrink-0" aria-label="Alson Sombreiro Consultadoria, página inicial">
+        <NuxtLink to="/" class="shrink-0" aria-label="Alson Sombreiro Consultoria, página inicial">
           <img
             :src="lightMode ? '/logos/logo-light.png' : '/logos/logo-dark.png'"
             alt="Alson Sombreiro Imobiliária"

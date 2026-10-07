@@ -21,14 +21,14 @@ export default defineNuxtConfig({
     public: {
       apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:3333/api',
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-      siteName: process.env.NUXT_PUBLIC_SITE_NAME || 'Alson Sombreiro Consultadoria',
+      siteName: process.env.NUXT_PUBLIC_SITE_NAME || 'Alson Sombreiro Consultoria',
     },
   },
 
   app: {
     head: {
       htmlAttrs: { lang: 'pt-AO' },
-      titleTemplate: '%s · Alson Sombreiro Consultadoria',
+      titleTemplate: '%s · Alson Sombreiro Consultoria',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },

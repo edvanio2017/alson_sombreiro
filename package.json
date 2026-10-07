@@ -2,7 +2,7 @@
   "name": "alson-sombreiro",
   "version": "1.0.0",
   "private": true,
-  "description": "Sistema institucional Alson Sombreiro Consultadoria, Lda: site público e backoffice com Mini CRM",
+  "description": "Sistema institucional Alson Sombreiro Consultoria, Lda: site público e backoffice com Mini CRM",
   "packageManager": "pnpm@9.12.0",
   "engines": {
     "node": ">=20.11.0"
